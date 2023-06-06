@@ -3,7 +3,7 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="utf-8">
-        <link rel="manifest" href="/manifest.json?_ijt=9br29rbfb5bf2i01qheaqsr8uk">
+    <link rel="manifest" href="/manifest.json?_ijt=9br29rbfb5bf2i01qheaqsr8uk">
     <meta name="keywords"
           content="photography,media,portfolio">
     <meta name="description" content="A mysterious adventure begins, you have quests to do adventurer!">
@@ -63,12 +63,16 @@
         <p>Don't worry, you'll know when a quest is ready.</p>
         <p>Quests will require your interaction in the real world as well as the internet, and you'll be guided by me
             through this page.</p>
-        <p>Now you can leave, you'll know when a quest is ready! Also, make sure to enable notifications for this page, it's a mandatory move... Just saying.</p>
+        <p>Oh, and before I forget, never tell anyone about this... Not your friends not your parents not your dog, even
+            the maker of this page and never tell anyone about your progress!</p>
+        <p>Now you can leave, you'll know when a quest is ready! Also, make sure to enable notifications for this page,
+            it's a mandatory move... Just saying.</p>
 
         <div class="accordion accordion-flush" id="accordionFlushExample">
             <div class="accordion-item">
                 <h2 class="accordion-header">
-                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
                         Quest 1: Coming Soon
                     </button>
                 </h2>
@@ -78,7 +82,8 @@
             </div>
             <div class="accordion-item">
                 <h2 class="accordion-header">
-                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
                         Quest 2: Coming Soon
                     </button>
                 </h2>
@@ -88,21 +93,29 @@
             </div>
             <div class="accordion-item">
                 <h2 class="accordion-header">
-                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#flush-collapseThree" aria-expanded="false"
+                            aria-controls="flush-collapseThree">
                         Quest 3: Coming Soon
                     </button>
                 </h2>
-                <div id="flush-collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
-                    <div class="accordion-body">So, you're still looking here, come back later I assure you a quest will be available soon here!</div>
+                <div id="flush-collapseThree" class="accordion-collapse collapse"
+                     data-bs-parent="#accordionFlushExample">
+                    <div class="accordion-body">So, you're still looking here, come back later I assure you a quest will
+                        be available soon here!
+                    </div>
                 </div>
             </div>
             <div class="accordion-item">
                 <h2 class="accordion-header">
-                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseFour" aria-expanded="false" aria-controls="flush-collapseThree">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#flush-collapseFour" aria-expanded="false"
+                            aria-controls="flush-collapseThree">
                         Quest 4: Coming Soon
                     </button>
                 </h2>
-                <div id="flush-collapseFour" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+                <div id="flush-collapseFour" class="accordion-collapse collapse"
+                     data-bs-parent="#accordionFlushExample">
                     <div class="accordion-body">&#129324;</div>
                 </div>
             </div>
@@ -116,7 +129,7 @@
         crossorigin="anonymous"></script>
 
 <script>
-    if('serviceWorker' in navigator){
+    if ('serviceWorker' in navigator) {
         const messaging = firebase.messaging()
         navigator.serviceWorker.register('/firebase-messaging-sw.js')
             .then((register) => {
@@ -128,15 +141,15 @@
                             // subscribeTokenToTopic(fcmToken, 'all');
                             // subscribeTokenToTopic(fcmToken, 'frontend');
                             messaging.onMessage((payload) => {
-                                console.log("onMessage event fired",payload)
+                                console.log("onMessage event fired", payload)
                                 let showNotification = document.visibilityState !== "visible";
-                                if(showNotification) {
+                                if (showNotification) {
                                     // Notification code
                                     Notification.requestPermission().then(function (permission) {
                                         console.log(permission);
                                         var title = payload.data.title;
                                         var body = payload.data.body;
-                                        var notification = new Notification(title, { body });
+                                        var notification = new Notification(title, {body});
 
                                     });
                                 }
