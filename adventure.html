@@ -3,7 +3,7 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="utf-8">
-    <link rel="manifest" href="/manifest.json?_ijt=9br29rbfb5bf2i01qheaqsr8uk">
+    <!--    <link rel="manifest" href="/manifest.json?_ijt=9br29rbfb5bf2i01qheaqsr8uk">-->
     <meta name="keywords"
           content="photography,media,portfolio">
     <meta name="description" content="A mysterious adventure begins, you have quests to do adventurer!">
@@ -33,6 +33,8 @@
 <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-analytics.js"></script>
 <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-messaging.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-firestore.js"></script>
+
 <script>
     // Your web app's Firebase configuration
     // For Firebase JS SDK v7.20.0 and later, measurementId is optional
@@ -46,38 +48,59 @@
         measurementId: "G-R96T2NY7SR"
     };
     // Initialize Firebase
-    firebase.initializeApp(firebaseConfig);
+    const app = firebase.initializeApp(firebaseConfig);
     firebase.analytics();
+    const db = firebase.firestore();
+
+    const collection = db.collection('actions');
+
+
 </script>
 <div class="container">
     <div class="text-center">
         <h1>Mysterious Adventure</h1>
-        <p>Greetings adventurer, nice to see you've stumbled upon this mysterious page. I can see the confusion on your
-            face, well, I'm as confused as you are. One day I was narrating a story about a wooden boy with a big nose
-            the other day I woke up here... Anyway, welcome to the greatest adventure of your life. The maker of this
-            page - who is amazingly handsome and good-looking - told me that this is made only for you, and it's one of
-            a kind. The adventure is a collection of 4 quests - yes you read that correctly, you have quests to do - and
-            I will be your guide through all except for the last one.</p>
-        <p>Each quest will appear after certain events that will happen in real life (I don't know what that is, I'm
-            just a narrator that only exists in your head).</p>
-        <p>Don't worry, you'll know when a quest is ready.</p>
-        <p>Quests will require your interaction in the real world as well as the internet, and you'll be guided by me
-            through this page.</p>
-        <p>Oh, and before I forget, never tell anyone about this... Not your friends not your parents not your dog, even
-            the maker of this page and never tell anyone about your progress!</p>
-        <p>Now you can leave, you'll know when a quest is ready! Also, make sure to enable notifications for this page,
-            it's a mandatory move... Just saying.</p>
+        <p>Greetings adventurer, there is a new quest available for you, make sure to follow the steps carefully. Also,
+            make sure to not tell anyone about it or let anyone see you doing anything related to it, the fate of all
+            humanity
+            depends on it...</p>
+        <p>Now go fourth adventurer and don't forget people could die if you don't follow the steps correctly.</p>
+        <p>I'll be drinking coffee and narrating a story about a girl with a fishtail and a weird bra.</p>
 
-        <div class="accordion accordion-flush" id="accordionFlushExample">
+        <div class="accordion accordion-flush text-start" id="accordionFlushExample">
             <div class="accordion-item">
                 <h2 class="accordion-header">
                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                            data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
-                        Quest 1: Coming Soon
+                            data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne" id="quest1title">
+                        Quest 1: Keys To Our Love
                     </button>
                 </h2>
                 <div id="flush-collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
-                    <div class="accordion-body">What are you looking for here, I said it's coming soon!</div>
+                    <div class="accordion-body" id="quest1">
+                        <p>Here we are, your first quest. Excited aren't you?</p>
+                        <p>The clan of goblins has stolen the king's keys, and we need a brave adventurer like you to
+                            figure out the riddles
+                            and get them back.</p>
+                        <p>This quest is made of two parts:</p>
+                        <ul>
+                            <li>The first part is to figure out the riddle that will reveal the password to the map
+                                which will show where those pesky goblins hid the keys,
+                            </li>
+                            <li>The second part is to follow the map and find where the keys are hidden then steal them
+                                back.
+                            </li>
+                        </ul>
+                        <p>Here's the riddle that the goblins left behind:</p>
+                        <p style="font-style: italic">A place filled with computing where people come and go, in a
+                            sanctum where waves are in micro shape, under the great circle of heed, there you'll find a
+                            code to what you need!</p>
+                        <div>
+                            <div class="input-group mb-3">
+                                <input type="text" class="form-control" placeholder="Pass Code" aria-label="Pass Code"
+                                       aria-describedby="button-addon2" id="password_input_1">
+                                <button class="btn btn-outline-secondary" type="button" id="button-addon2">GO</button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="accordion-item">
@@ -129,6 +152,52 @@
         crossorigin="anonymous"></script>
 
 <script>
+
+    let keysFound = false;
+    collection.doc('found').get().then(snapshot => {
+        if(snapshot.exists) {
+            if(snapshot.data().keysFound) {
+                keysFound = true;
+                console.log('UPDATING')
+                const div = document.getElementById('quest1');
+                div.innerHTML = '<p>Congratulations on finding the keys!!! You can keep them they are yours, you can open the office now... You wil need it!. Hang tight for the next quest!</p>';
+                const titleDiv = document.getElementById('quest1title');
+                titleDiv.innerHTML = 'Quest 1: Keys To Our Love (Completed)'
+            }
+        }
+    })
+
+    if(keysFound) {
+
+
+    } else {
+        const button = document.getElementById('button-addon2');
+        const input = document.getElementById('password_input_1');
+
+        button.addEventListener('click', async () => {
+            if (input.value === 'ILoveU28') {
+                try {
+                    const collection = db.collection('actions');
+                    const ID = collection.doc('found').set({
+                        created: Date.now(),
+                    })
+                        .then(() => {
+                            console.log('Data has been saved successfully !')
+                        })
+                        .catch(error => {
+                            console.error(error)
+                        });
+                } catch (e) {
+                    console.error("Error adding document: ", e);
+                }
+
+                const link = 'https://1drv.ms/i/s!Aps37J07mtTolqJiFFurLNd3kqdHRA';
+                window.open(link, "_self");
+            }
+        })
+    }
+
+
     if ('serviceWorker' in navigator) {
         const messaging = firebase.messaging()
         navigator.serviceWorker.register('/firebase-messaging-sw.js')
