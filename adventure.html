@@ -59,8 +59,13 @@
 <div class="container">
     <div class="text-center">
         <h1>Mysterious Adventure</h1>
-        <p>Greetings adventurer, so I see you've completed your first quest, nice job!</p>
-        <p>Keep a look-out for the next one!</p>
+        <p>Welcome back adventurer, been a long time!</p>
+        <p>Sorry it took a while, but the maker just wanted to take his time for this one!</p>
+        <p>So anyway, I just heard rumors that the goblin king just got out of prison and went to steal an important artifact.</p>
+        <p>This artifact is called the Amulet of Dreams! It makes the wearer's dreams come true. And as you have figured out, the
+            goblin king has dreams... BORING DREAMS!</p>
+        <p>Our intel is gathering information in order to know where he hid the Amulet, and I'll let you know once we found out. So, stay tuned!</p>
+        <p>Now if you'll excuse me I have to go narrate a story about a beautiful girl and a huge ass puppy!</p>
 
         <div class="accordion accordion-flush text-start" id="accordionFlushExample">
             <div class="accordion-item">
@@ -68,18 +73,12 @@
                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                             data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne"
                             id="quest1title">
-                        Quest 1: Keys To Our Love
+                        Quest 1: Keys To Our Love  (Completed)
                     </button>
                 </h2>
                 <div id="flush-collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
                     <div class="accordion-body" id="quest1">
-                        <p>Welcome back adventurer, been a long time!</p>
-                        <p>Sorry it took a while, but the maker just wanted to take his time for this one!</p>
-                        <p>So anyway, I just heard rumors that the goblin king just got out of prison and went to steal an important artifact.</p>
-                        <p>This artifact is called the Amulet of Dreams! It makes the wearer's dreams come true. And as you have figured out, the
-                        goblin king has dreams... BORING DREAMS!</p>
-                        <p>Our intel is gathering information in order to know where he hid the Amulet, and I'll let you know once we found out. So, stay tuned!</p>
-                        <p>Now if you'll excuse me I have to go narrate a story about a beautiful girl and a huge ass puppy!</p>
+                        <p>This Quest is complete!</p>
                     </div>
                 </div>
             </div>
@@ -134,18 +133,18 @@
 <script>
 
     let keysFound = false;
-    collection.doc('found').get().then(snapshot => {
-        if (snapshot.exists) {
-            if (snapshot.data().keysFound) {
-                keysFound = true;
-                console.log('UPDATING')
-                // const div = document.getElementById('quest1');
-                // div.innerHTML = '<p>Congratulations on finding the keys!!! You can keep them they are yours, you can open the office now... You wil need it!. Hang tight for the next quest!</p>';
-                const titleDiv = document.getElementById('quest1title');
-                titleDiv.innerHTML = 'Quest 1: Keys To Our Love (Completed)'
-            }
-        }
-    })
+    // collection.doc('found').get().then(snapshot => {
+    //     if (snapshot.exists) {
+    //         if (snapshot.data().keysFound) {
+    //             keysFound = true;
+    //             console.log('UPDATING')
+    //             // const div = document.getElementById('quest1');
+    //             // div.innerHTML = '<p>Congratulations on finding the keys!!! You can keep them they are yours, you can open the office now... You wil need it!. Hang tight for the next quest!</p>';
+    //             const titleDiv = document.getElementById('quest1title');
+    //             titleDiv.innerHTML = 'Quest 1: Keys To Our Love (Completed)'
+    //         }
+    //     }
+    // })
 
     if (keysFound) {
 
