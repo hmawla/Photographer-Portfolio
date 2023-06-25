@@ -153,27 +153,27 @@
         const button = document.getElementById('button-addon2');
         const input = document.getElementById('password_input_1');
 
-        button.addEventListener('click', async () => {
-            if (input.value === 'ILoveU28') {
-                try {
-                    const collection = db.collection('actions');
-                    const ID = collection.doc('found').set({
-                        created: Date.now(),
-                    })
-                        .then(() => {
-                            console.log('Data has been saved successfully !')
-                        })
-                        .catch(error => {
-                            console.error(error)
-                        });
-                } catch (e) {
-                    console.error("Error adding document: ", e);
-                }
-
-                const link = 'https://1drv.ms/i/s!Aps37J07mtTolqJiFFurLNd3kqdHRA';
-                window.open(link, "_self");
-            }
-        })
+        // button.addEventListener('click', async () => {
+        //     if (input.value === 'ILoveU28') {
+        //         try {
+        //             const collection = db.collection('actions');
+        //             const ID = collection.doc('found').set({
+        //                 created: Date.now(),
+        //             })
+        //                 .then(() => {
+        //                     console.log('Data has been saved successfully !')
+        //                 })
+        //                 .catch(error => {
+        //                     console.error(error)
+        //                 });
+        //         } catch (e) {
+        //             console.error("Error adding document: ", e);
+        //         }
+        //
+        //         const link = 'https://1drv.ms/i/s!Aps37J07mtTolqJiFFurLNd3kqdHRA';
+        //         window.open(link, "_self");
+        //     }
+        // })
     }
 
 
