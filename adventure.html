@@ -59,14 +59,10 @@
 <div class="container">
     <div class="text-center">
         <h1>Mysterious Adventure</h1>
-        <p>Welcome back adventurer, been a long time!</p>
-        <p>Sorry it took a while, but the maker just wanted to take his time for this one!</p>
-        <p>So anyway, I just heard rumors that the goblin king just got out of prison and went to steal an important artifact.</p>
-        <p>This artifact is called the Amulet of Dreams! It makes the wearer's dreams come true. And as you have figured out, the
-            goblin king has dreams... BORING DREAMS!</p>
-        <p>Our intel is gathering information in order to know where he hid the Amulet, and I'll let you know once we found out. So, stay tuned!</p>
-        <p>Also, sorry about the notifications issue, the maker is a dumbass!</p>
-        <p>Now if you'll excuse me I have to go narrate a story about a beautiful girl and a huge ass puppy!</p>
+        <div id="top-caption">
+            <p>Welcome back adventurer!</p>
+            <p>Our intel has found a clue of the Amulet's whereabouts. Check the quest to get it!</p>
+        </div>
 
         <div class="accordion accordion-flush text-start" id="accordionFlushExample">
             <div class="accordion-item">
@@ -74,7 +70,7 @@
                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                             data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne"
                             id="quest1title">
-                        Quest 1: Keys To Our Love  (Completed)
+                        Quest 1: Keys To Our Love (Completed)
                     </button>
                 </h2>
                 <div id="flush-collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
@@ -86,12 +82,24 @@
             <div class="accordion-item">
                 <h2 class="accordion-header">
                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                            data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+                            data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo"
+                            id="quest2title">
                         Quest 2: Artifact of Our Dreams
                     </button>
                 </h2>
                 <div id="flush-collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
-                    <div class="accordion-body">Gathering Intel, come back later...</div>
+                    <div class="accordion-body" id="quest2">
+                        <p>So, our intel has found a clue of where the Amulet is.</p>
+                        <p>Seems like a riddle:</p>
+                        <ul style="font-style: italic">
+                            <li>A place of knowledge it is</li>
+                            <li>Where all knowledge begins</li>
+                            <li>On the upper floors there is</li>
+                            <li>Between The Ancient Stories and The Science of Earth</li>
+                            <li>The Amulet of Dreams that is</li>
+                        </ul>
+                        <p>Make sure that no one sees you getting it!</p>
+                    </div>
                 </div>
             </div>
             <div class="accordion-item">
@@ -134,18 +142,20 @@
 <script>
 
     let keysFound = false;
-    // collection.doc('found').get().then(snapshot => {
-    //     if (snapshot.exists) {
-    //         if (snapshot.data().keysFound) {
-    //             keysFound = true;
-    //             console.log('UPDATING')
-    //             // const div = document.getElementById('quest1');
-    //             // div.innerHTML = '<p>Congratulations on finding the keys!!! You can keep them they are yours, you can open the office now... You wil need it!. Hang tight for the next quest!</p>';
-    //             const titleDiv = document.getElementById('quest1title');
-    //             titleDiv.innerHTML = 'Quest 1: Keys To Our Love (Completed)'
-    //         }
-    //     }
-    // })
+    collection.doc('found').get().then(snapshot => {
+        if (snapshot.exists) {
+            if (snapshot.data().amuletFound) {
+                keysFound = true;
+                console.log('UPDATING')
+                const div1 = document.getElementById('top-caption');
+                div.innerHTML = '<p>YOU FOUND IT!!! check the quest log for quest 2 for further info to your next quest</p>';
+                const div = document.getElementById('quest2');
+                div.innerHTML = '<p>Congratulations on finding the amulet!!! You can keep it, it is yours are yours, make sure to add it to the office keychain you will need that for your next quest!. Hang tight for the next quest!</p>';
+                const titleDiv = document.getElementById('quest2title');
+                titleDiv.innerHTML = 'Quest 2: Artifact of Our Dreams (Completed)'
+            }
+        }
+    })
 
     if (keysFound) {
 
