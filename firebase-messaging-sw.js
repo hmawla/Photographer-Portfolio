@@ -11,8 +11,15 @@ const firebaseConfig = {
 };
 firebase.initializeApp(firebaseConfig);
 
-self.addEventListener('notificationclick', event => {
-    console.log(event)
+self.addEventListener('notificationclick', function (event) {
+    console.log('On notification click: ', event.notification);
+    event.notification.close();
+    clients.openWindow("https://yumna.pro/adventure.html");
+});
+
+self.addEventListener("notificationclose", function (event) {
+    event.notification.close();
+    console.log('user has clicked notification close');
 });
 
 const messaging = firebase.messaging();

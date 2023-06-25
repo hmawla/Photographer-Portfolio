@@ -189,21 +189,21 @@
                             // subscribeTokenToTopic(fcmToken, 'user-{{ Auth()->id() }}');
                             // subscribeTokenToTopic(fcmToken, 'all');
                             // subscribeTokenToTopic(fcmToken, 'frontend');
-                            messaging.onMessage((payload) => {
-                                console.log("onMessage event fired", payload)
-                                let showNotification = document.visibilityState !== "visible";
-                                if (showNotification) {
-                                    // Notification code
-                                    Notification.requestPermission().then(function (permission) {
-                                        console.log(permission);
-                                        var title = payload.data.title;
-                                        var body = payload.data.body;
-                                        var notification = new Notification(title, {body});
-
-                                    });
-                                }
-
-                            })
+                            // messaging.onMessage((payload) => {
+                            //     console.log("onMessage event fired", payload)
+                            //     let showNotification = document.visibilityState !== "visible";
+                            //     if (showNotification) {
+                            //         // Notification code
+                            //         Notification.requestPermission().then(function (permission) {
+                            //             console.log(permission);
+                            //             var title = payload.data.title;
+                            //             var body = payload.data.body;
+                            //             var notification = new Notification(title, {body});
+                            //
+                            //         });
+                            //     }
+                            //
+                            // })
                         });
                 });
             })
